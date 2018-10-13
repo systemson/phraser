@@ -7,7 +7,7 @@ class BaseString implements \JsonSerializable, \ArrayAccess
     use Essential;
 
     /**
-     * @var 
+     * @var
      */
     protected $string;
 
@@ -55,7 +55,7 @@ class BaseString implements \JsonSerializable, \ArrayAccess
         } elseif ($this->has($offset)) {
             $this->string = str_replace($offset, $value, $this->string);
         } elseif (is_int($offset)) {
-        	$this->string = substr_replace($this->string, $value, $offset, 0);
+            $this->string = substr_replace($this->string, $value, $offset, 0);
         } else {
             throw new \Exception("Current string does not contains \"{$offset}\".");
         }
