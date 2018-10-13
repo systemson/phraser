@@ -16,12 +16,12 @@ class BaseString implements \JsonSerializable, \ArrayAccess
         $this->string = $string;
     }
 
-    public function contains($needle)
+    public function contains(string $needle)
     {
         return strpos($this->string, $needle) !== false;
     }
 
-    public function has($needle)
+    public function has(string $needle)
     {
         return $this->contains($needle);
     }
@@ -50,10 +50,10 @@ class BaseString implements \JsonSerializable, \ArrayAccess
 
     public function offsetSet($offset, $value)
     {
-        if ($this->has($offset)) {
-            $this->string = str_replace($offset, $value, $this->string);
-        } elseif (is_null($offset)) {
+        if (is_null($offset)) {
             $this->string .= $value;
+        } elseif ($this->has($offset)) {
+            $this->string = str_replace($offset, $value, $this->string);
         } elseif (is_int($offset)) {
         	$this->string = substr_replace($this->string, $value, $offset, 0);
         } else {
