@@ -2,16 +2,8 @@
 
 namespace Amber\StringObject;
 
-use Amber\StringObject\Base\Essential;
+use Amber\StringObject\Base\BaseString;
 
-class Str
+class Str extends BaseString
 {
-    use Essential;
-
-    protected $string;
-
-    public function __construct($string)
-    {
-        $this->string = $string;
-    }
 }
