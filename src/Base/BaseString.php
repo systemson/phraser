@@ -1,19 +1,24 @@
 <?php
 
-namespace Amber\StringObject\Base;
+namespace Amber\Phraser\Base;
 
 class BaseString implements \JsonSerializable, \ArrayAccess
 {
     use Essential;
 
     /**
-     * @var
+     * @var string The content of the class.
      */
-    protected $string;
+    protected $string = '';
 
-    public function __construct($string)
+    public function __construct($string = '')
     {
         $this->string = $string;
+    }
+
+    public function set(string $string)
+    {
+        return $this->string = $string;
     }
 
     public function contains(string $needle)

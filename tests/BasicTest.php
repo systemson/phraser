@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use Amber\StringObject\Str;
+use Amber\Phraser\Str;
 use PHPUnit\Framework\TestCase;
 
 class StringTest extends TestCase
@@ -31,7 +31,7 @@ class StringTest extends TestCase
 
         $this->assertFalse($string->isEmpty());
 
-        $string->replace('');
+        $string->set('');
         $this->assertTrue($string->isEmpty());
 
         return $string;
@@ -43,7 +43,7 @@ class StringTest extends TestCase
     public function testStringAsArray($string)
     {
         $raw = 'Wapper class to handle strings.';
-        $string->replace($raw);
+        $string->set($raw);
         $search = 'strings';
         $replace = 'strings like objects';
 

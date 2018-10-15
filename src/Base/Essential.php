@@ -1,6 +1,6 @@
 <?php
 
-namespace Amber\StringObject\Base;
+namespace Amber\Phraser\Base;
 
 /**
  * Implements the basis for the Collection.
@@ -46,6 +46,7 @@ trait Essential
      */
     public function lines(): StringArray
     {
+        $this->string = preg_replace("#\r|\n|\t#", PHP_EOL, $this->string);
         return new StringArray($this->toArray(PHP_EOL), PHP_EOL);
     }
 
@@ -82,11 +83,14 @@ trait Essential
     /**
      * Replaces the string.
      *
-     * @return void
+     * @param string|array $search  The string(s) to search for.
+     * @param string       $replace The string to replace.
+     *
+     * @return static
      */
-    public function replace(string $string)
+    public function replace($search, string $replace = '')
     {
-        $this->string = $string;
+        $this->string = str_replace($search, $replace, $this->string);
         return $this;
     }
 

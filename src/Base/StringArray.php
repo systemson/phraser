@@ -1,9 +1,9 @@
 <?php
 
-namespace Amber\StringObject\Base;
+namespace Amber\Phraser\Base;
 
 use Amber\Collection\Collection;
-use Amber\StringObject\Str;
+use Amber\Phraser\Str;
 
 class StringArray implements \ArrayAccess
 {

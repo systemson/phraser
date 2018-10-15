@@ -1,8 +1,8 @@
 <?php
 
-namespace Amber\StringObject;
+namespace Amber\Phraser;
 
-use Amber\StringObject\Base\BaseString;
+use Amber\Phraser\Base\BaseString;
 
 class Str extends BaseString
 {
