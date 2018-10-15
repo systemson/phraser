@@ -7,6 +7,8 @@ use Amber\Phraser\Str;
 
 class StringArray implements \ArrayAccess
 {
+    use ArrayAccessTrait, CaseHandlerTrait;
+
     protected $array;
 
     protected $delimiter;

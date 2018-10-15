@@ -2,7 +2,9 @@
 
 namespace Amber\Phraser\Base\StringArray;
 
-trait ArrayAccess
+use Amber\Phraser\Str;
+
+trait ArrayAccessTrait
 {
     public function offsetExists($offset)
     {
