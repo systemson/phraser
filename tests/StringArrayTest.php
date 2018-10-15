@@ -3,7 +3,7 @@
 namespace Tests;
 
 use Amber\Phraser\Str;
-use Amber\Phraser\Base\StringArray;
+use Amber\Phraser\Base\StringArray\StringArray;
 use PHPUnit\Framework\TestCase;
 
 class StringArrayTest extends TestCase

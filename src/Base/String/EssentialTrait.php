@@ -1,11 +1,12 @@
 <?php
 
-namespace Amber\Phraser\Base;
+namespace Amber\Phraser\Base\String;
 
+use Amber\Phraser\Base\StringArray\StringArray;
 /**
  * Implements the basis for the Collection.
  */
-trait Essential
+trait EssentialTrait
 {
     /**
      * Returns a new collection.
