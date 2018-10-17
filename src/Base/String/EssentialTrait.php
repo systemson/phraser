@@ -3,8 +3,9 @@
 namespace Amber\Phraser\Base\String;
 
 use Amber\Phraser\Base\StringArray\StringArray;
+
 /**
- * Implements the basis for the Collection.
+ * Implements the basis for the String Object.
  */
 trait EssentialTrait
 {
@@ -31,7 +32,7 @@ trait EssentialTrait
     }
 
     /**
-     * Returns an array of the string.
+     * Returns an array of the string's words.
      *
      * @return array An array of the words in the string.
      */
@@ -41,7 +42,7 @@ trait EssentialTrait
     }
 
     /**
-     * Returns an array of the string lines.
+     * Returns an array of the string's lines.
      *
      * @return array An array of the lines in the string.
      */
