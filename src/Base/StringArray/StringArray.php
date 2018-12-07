@@ -47,8 +47,12 @@ class StringArray implements \ArrayAccess
 
     public function trim()
     {
-        $this->array = $this->array->filter('strlen');
-        $this->array = $this->array->map('trim');
+        $array = $this->array
+        ->filter('strlen')
+        ->map('trim')
+        ->values();
+
+        $this->array->exchangeArray($array);
         return $this;
     }
 }

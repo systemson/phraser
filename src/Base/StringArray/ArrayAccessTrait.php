@@ -13,7 +13,7 @@ trait ArrayAccessTrait
 
     public function offsetGet($offset)
     {
-        return new Str($this->array->get($offset));
+        return new Str($this->array[$offset]);
     }
 
     public function offsetSet($offset, $value)
@@ -27,6 +27,7 @@ trait ArrayAccessTrait
 
     public function offsetUnset($offset)
     {
-        $this->array->remove($offset);
+        $this->array->delete($offset);
+        $this->trim();
     }
 }

@@ -9,9 +9,9 @@ class Str extends StringObject
     /**
      * @var string The content of the class.
      */
-    protected $string = '';
+    protected $string;
 
-    public function __construct($string = '')
+    public function __construct(string $string = '')
     {
         $this->string = $string;
     }
