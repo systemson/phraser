@@ -27,12 +27,12 @@ class StringArray implements \ArrayAccess
 
     protected function newStr($delimiter = null)
     {
-        return new Str($this->implode($delimiter));
+        return new Str($this->implode($delimiter ?? $this->delimiter));
     }
 
     public function __toString()
     {
-        return $this->implode();
+        return $this->implode($this->delimiter);
     }
 
     public function toArray()
@@ -47,8 +47,8 @@ class StringArray implements \ArrayAccess
 
     public function trim()
     {
-        $this->array = $this->array->filter('strlen');
-        $this->array = $this->array->map('trim');
+        $this->array = $this->array->filter(function ($value) {return strlen($value);});
+        $this->array = $this->array->map(function ($value) {return trim($value);});
         return $this;
     }
 }

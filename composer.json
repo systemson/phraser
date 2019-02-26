@@ -23,7 +23,7 @@
     },
     "require": {
         "php": ">=7.1.0",
-        "amber/collection": "^0.2.0@beta"
+        "amber/collection": "^0.3.0@beta"
     },
     "require-dev": {
         "phpdocumentor/phpdocumentor": "^2.0",
