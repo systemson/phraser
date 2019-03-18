@@ -33,4 +33,11 @@ class Phraser
 
         return (new StringArray($raw, ' '))->trim();
     }
+
+    public static function last(string $string, string $delimiter = '.')
+    {
+    	$array = explode($delimiter, $string);
+
+    	return end($array);
+    }
 }

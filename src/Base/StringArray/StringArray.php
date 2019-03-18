@@ -20,14 +20,14 @@ class StringArray implements \ArrayAccess
         $this->delimiter = $delimiter;
     }
 
-    protected function implode($delimiter = null)
-    {
-        return implode($delimiter ?? $this->delimiter, $this->array->all());
-    }
-
     protected function newStr($delimiter = null)
     {
         return new Str($this->implode($delimiter ?? $this->delimiter));
+    }
+
+    public function implode($delimiter = null)
+    {
+        return implode($delimiter ?? $this->delimiter, $this->array->all());
     }
 
     public function __toString()

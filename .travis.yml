@@ -6,7 +6,6 @@ cache:
     - $HOME/.composer/cache
 
 php:
-  - '7.1'
   - '7.2'
   - '7.3'
 
@@ -14,4 +13,7 @@ before_install:
 
 script:
   - composer install
-  - composer test
+  - php vendor/bin/phpunit
+
+after_success:
+  - travis_retry php vendor/bin/php-coveralls
