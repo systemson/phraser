@@ -59,4 +59,9 @@ class StringArray implements \ArrayAccess
         $this->array->exchangeArray($array);
         return $this;
     }
+
+    public function last()
+    {
+        return $this->newStr($this->array->last());
+    }
 }

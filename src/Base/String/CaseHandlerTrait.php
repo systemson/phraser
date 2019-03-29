@@ -12,7 +12,7 @@ trait CaseHandlerTrait
 
     public function lowerCaseFirst()
     {
-        $this->string = lcfirst(strtolower($this->string));
+        $this->string = lcfirst($this->string);
         return $this;
     }
 
@@ -24,7 +24,7 @@ trait CaseHandlerTrait
 
     public function upperCaseFirst()
     {
-        $this->string = ucfirst(strtolower($this->string));
+        $this->string = ucfirst($this->string);
         return $this;
     }
 }
