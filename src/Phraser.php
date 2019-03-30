@@ -6,11 +6,18 @@ use Amber\Phraser\Base\StringArray\StringArray;
 
 class Phraser
 {
+    public static function fromString($string)
+    {
+        $raw = explode(' ', strtolower($string));
+
+        return (new StringArray($raw, ' '))->trim();
+    }
+
     public static function fromCamelCase($string)
     {
         $array = preg_split('/(?=[A-Z])/', $string);
 
-        return new StringArray($array);
+        return (new StringArray($array))->trim();
     }
 
     public static function fromSnakeCase($string)
@@ -27,17 +34,10 @@ class Phraser
         return new StringArray($raw, '-');
     }
 
-    public static function fromString($string)
-    {
-        $raw = explode(' ', strtolower($string));
-
-        return (new StringArray($raw, ' '))->trim();
-    }
-
     public static function last(string $string, string $delimiter = '.')
     {
-    	$array = explode($delimiter, $string);
+        $array = explode($delimiter, $string);
 
-    	return end($array);
+        return end($array);
     }
 }

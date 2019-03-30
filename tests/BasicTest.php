@@ -9,7 +9,7 @@ class StringTest extends TestCase
 {
     public function testBasics()
     {
-        $raw = 'Hello world';
+        $raw = '  Hello world ';
 
         $string = new Str($raw);
 
@@ -23,8 +23,11 @@ class StringTest extends TestCase
         $this->assertEquals($string, $string->clone());
         $this->assertInstanceOf(Str::class, $string->clone());
 
-        $this->assertEquals(11, $string->length());
+        $this->assertEquals(14, $string->length());
 
+        $this->assertEquals(11, $string->trim()->length());
+
+        $string = new Str($raw);
         $string->reverse();
         $this->assertEquals(strrev($raw), $string);
         $this->assertEquals($raw, $string->reversed());

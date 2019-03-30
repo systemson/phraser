@@ -6,7 +6,11 @@ trait CaseHandlerTrait
 {
     public function toCamelCase($lower = false)
     {
-        $this->array = $this->array->map('ucfirst');
+        $array = $this->map(function ($value) {
+            return ucfirst($value);
+        });
+
+        $this->exchangeArray($array);
 
         if ($lower) {
             return $this->newStr('')->lowerCaseFirst();
@@ -27,11 +31,11 @@ trait CaseHandlerTrait
 
     public function toUpperCase()
     {
-        return $this->newStr(' ')->toUpperCase();
+        return $this->newStr()->toUpperCase();
     }
 
     public function toLowerCase()
     {
-        return $this->newStr(' ')->toLowerCase();
+        return $this->newStr()->toLowerCase();
     }
 }

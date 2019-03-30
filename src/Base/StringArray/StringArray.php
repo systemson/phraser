@@ -5,19 +5,17 @@ namespace Amber\Phraser\Base\StringArray;
 use Amber\Collection\Collection;
 use Amber\Phraser\Str;
 
-class StringArray implements \ArrayAccess
+class StringArray extends Collection
 {
-    use ArrayAccessTrait, CaseHandlerTrait;
-
-    protected $array;
+    use CaseHandlerTrait, ArrayAccessTrait;
 
     protected $delimiter;
 
     public function __construct(array $array, $delimiter = null)
     {
-        $this->array = new Collection($array);
-
         $this->delimiter = $delimiter;
+
+        parent::__construct($array);
     }
 
     protected function newStr($delimiter = null)
@@ -25,19 +23,9 @@ class StringArray implements \ArrayAccess
         return new Str($this->implode($delimiter ?? $this->delimiter));
     }
 
-    public function implode($delimiter = null)
-    {
-        return implode($delimiter ?? $this->delimiter, $this->array->all());
-    }
-
     public function __toString()
     {
         return $this->implode($this->delimiter);
-    }
-
-    public function toArray()
-    {
-        return $this->array->all();
     }
 
     public function toString()
@@ -47,21 +35,25 @@ class StringArray implements \ArrayAccess
 
     public function trim()
     {
-    	$array = $this->array
-        ->filter(function ($value) {
-        	return strlen($value);
+        $array = $this->filter(function ($value) {
+            return strlen($value);
         })
         ->map(function ($value) {
-        	return trim($value);
+            return trim($value);
         })
         ->values();
 
-        $this->array->exchangeArray($array);
+        $this->exchangeArray($array);
         return $this;
+    }
+
+    public function first()
+    {
+        return $this->newStr(parent::first());
     }
 
     public function last()
     {
-        return $this->newStr($this->array->last());
+        return $this->newStr(parent::last());
     }
 }

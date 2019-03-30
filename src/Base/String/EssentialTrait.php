@@ -154,6 +154,6 @@ trait EssentialTrait
 
     public function explode(string $delimiter = ', ')
     {
-    	return new StringArray(explode($delimiter, $this->string));
+        return new StringArray(explode($delimiter, $this->string));
     }
 }
