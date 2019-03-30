@@ -36,8 +36,30 @@ class Phraser
 
     public static function last(string $string, string $delimiter = '.')
     {
-        $array = explode($delimiter, $string);
+        $array = new StringArray(explode($delimiter, $string));
 
-        return end($array);
+        return $array->last();
+    }
+
+    public static function first(string $string, string $delimiter = '.')
+    {
+        $array = new StringArray(explode($delimiter, $string));
+
+        return $array->first();
+    }
+
+    public static function getInstance(string $string): Str
+    {
+    	return new Str($string);
+    }
+
+    public static function __callStatic($method, $args = []): Str
+    {
+    	$string = $args[0];
+
+    	$instance = static::getInstance($string);
+
+    	call_user_func_array([$instance, $method], $args);
+    	return $instance;
     }
 }

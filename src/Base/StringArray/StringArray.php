@@ -9,9 +9,9 @@ class StringArray extends Collection
 {
     use CaseHandlerTrait, ArrayAccessTrait;
 
-    protected $delimiter;
+    protected $delimiter = '';
 
-    public function __construct(array $array, $delimiter = null)
+    public function __construct(array $array, $delimiter = '')
     {
         $this->delimiter = $delimiter;
 
