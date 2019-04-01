@@ -16,23 +16,23 @@ class Str extends StringObject
         $this->string = $string;
     }
 
-    public static function fromCamelCase()
+    public function fromCamelCase()
     {
-        $array = preg_split('/(?=[A-Z])/', $this->tring);
+        $array = preg_split('/(?=[A-Z])/', $this->string);
 
         return (new StringArray($array))->trim();
     }
 
-    public static function fromSnakeCase()
+    public function fromSnakeCase()
     {
-        $array = explode('_', $this->tring);
+        $array = explode('_', $this->string);
 
         return new StringArray($array, '_');
     }
 
-    public static function fromKebabCase()
+    public function fromKebabCase()
     {
-        $array = explode('-', $this->tring);
+        $array = explode('-', $this->string);
 
         return new StringArray($array, '-');
     }
