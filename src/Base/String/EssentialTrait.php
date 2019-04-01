@@ -10,19 +10,36 @@ use Amber\Phraser\Base\StringArray\StringArray;
 trait EssentialTrait
 {
     /**
-     * Returns a new collection.
+     * Returns a new string.
      *
      * @param string $string.
      *
-     * @return static a new Instance of the collection.
+     * @return static a new Instance of the StringObject.
      */
-    protected function make($string = '')
+    public function make(string $string = ''): self
     {
         return new static($string);
     }
 
+    public function contains(string $needle)
+    {
+        return strpos($this->string, $needle) !== false;
+    }
+
     /**
      * Returns an array of the string.
+     *
+     * @return array An array of the words in the string.
+     */
+    public function explode(string $delimiter = ', '): StringArray
+    {
+        $array = explode($delimiter, $this->string);
+
+        return new StringArray($array, $delimiter);
+    }
+
+    /**
+     * Alias for explode().
      *
      * @return array An array of the words in the string.
      */
@@ -38,7 +55,7 @@ trait EssentialTrait
      */
     public function words(): StringArray
     {
-        return new StringArray($this->toArray(' '), ' ');
+        return $this->explode(' ');
     }
 
     /**
@@ -49,6 +66,7 @@ trait EssentialTrait
     public function lines(): StringArray
     {
         $this->string = preg_replace("#\r|\n|\t#", PHP_EOL, $this->string);
+
         return new StringArray($this->toArray(PHP_EOL), PHP_EOL);
     }
 
@@ -60,6 +78,21 @@ trait EssentialTrait
     public function toJson(): string
     {
         return json_encode($this->string);
+    }
+
+    /**
+     * Returns the string for json serialization.
+     *
+     * @return string
+     */
+    public function jsonSerialize(): string
+    {
+        return $this->string;
+    }
+
+    public function __toString(): string
+    {
+        return $this->string;
     }
 
     /**
@@ -90,10 +123,11 @@ trait EssentialTrait
      *
      * @return static
      */
-    public function replace($search, string $replace = '')
+    public function replace($search, string $replace = ''): self
     {
-        $this->string = str_replace($search, $replace, $this->string);
-        return $this;
+        $string = str_replace($search, $replace, $this->string);
+
+        return $this->make($string);
     }
 
     /**
@@ -117,43 +151,14 @@ trait EssentialTrait
     }
 
     /**
-     * Returns the string for json serialization.
-     *
-     * @return string
-     */
-    public function jsonSerialize(): string
-    {
-        return $this->string;
-    }
-
-    /**
      * Reverses the order of the string.
      *
      * @return static
      */
-    public function reverse()
+    public function reverse(): self
     {
-        $this->string = strrev($this->string);
-        return $this;
-    }
+        $string = strrev($this->string);
 
-    /**
-     * Returns a new reversed string.
-     *
-     * @return String A new reversed String instance.
-     */
-    public function reversed(): self
-    {
-        return $this->make(strrev($this->string));
-    }
-
-    public function __toString()
-    {
-        return $this->string;
-    }
-
-    public function explode(string $delimiter = ', ')
-    {
-        return new StringArray(explode($delimiter, $this->string));
+        return $this->make($string);
     }
 }

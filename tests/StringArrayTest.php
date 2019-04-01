@@ -17,8 +17,6 @@ class StringArrayTest extends TestCase
 
         $this->assertInstanceOf(StringArray::class, $array);
 
-        $this->assertInstanceOf(Str::class, $array[0]);
-
         $this->assertEquals('Hello', $array[0]);
         $this->assertEquals('world', $array[1]);
 
@@ -57,9 +55,10 @@ class StringArrayTest extends TestCase
 
         $this->assertInstanceOf(StringArray::class, $array);
 
-        $this->assertInstanceOf(Str::class, $array[0]);
+        $this->assertEquals($raw[0], (string) $array->first());
         $this->assertEquals($raw[0], (string) $array[0]);
         $this->assertEquals($raw[1], (string) $array[1]);
         $this->assertEquals($raw[2], (string) $array[2]);
+        $this->assertEquals($raw[2], (string) $array->last());
     }
 }

@@ -7,7 +7,7 @@ use Amber\Phraser\Str;
 
 class StringArray extends Collection
 {
-    use CaseHandlerTrait, ArrayAccessTrait;
+    use CaseHandlerTrait;
 
     protected $delimiter = '';
 
@@ -18,7 +18,7 @@ class StringArray extends Collection
         parent::__construct($array);
     }
 
-    protected function newStr($delimiter = null)
+    protected function newStr(string $delimiter = null)
     {
         return new Str($this->implode($delimiter ?? $this->delimiter));
     }
@@ -49,11 +49,11 @@ class StringArray extends Collection
 
     public function first()
     {
-        return $this->newStr(parent::first());
+        return new Str(parent::first());
     }
 
     public function last()
     {
-        return $this->newStr(parent::last());
+        return new Str(parent::last());
     }
 }

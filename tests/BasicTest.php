@@ -28,14 +28,11 @@ class StringTest extends TestCase
         $this->assertEquals(11, $string->trim()->length());
 
         $string = new Str($raw);
-        $string->reverse();
-        $this->assertEquals(strrev($raw), $string);
-        $this->assertEquals($raw, $string->reversed());
+
+        $this->assertEquals(strrev($raw), $string = $string->reverse());
+        $this->assertEquals($raw, $string->reverse());
 
         $this->assertFalse($string->isEmpty());
-
-        $string->set('');
-        $this->assertTrue($string->isEmpty());
 
         return $string;
     }
@@ -46,7 +43,7 @@ class StringTest extends TestCase
     public function testStringAsArray($string)
     {
         $raw = 'Wapper class to handle strings.';
-        $string->set($raw);
+        $string->exchangeString($raw);
         $search = 'strings';
         $replace = 'strings like objects';
 

@@ -6,19 +6,14 @@ class StringObject implements \JsonSerializable, \ArrayAccess
 {
     use EssentialTrait, ArrayAccessTrait, CaseHandlerTrait;
 
-    public function set(string $string)
+    public function exchangeString(string $string): void
     {
-        return $this->string = $string;
+        $this->string = $string;
     }
 
     public function has(string $needle)
     {
         return $this->contains($needle);
-    }
-
-    public function contains(string $needle)
-    {
-        return strpos($this->string, $needle) !== false;
     }
 
     public function trim()
@@ -31,5 +26,15 @@ class StringObject implements \JsonSerializable, \ArrayAccess
     {
         $this->string = preg_replace("/\s+/", ' ', $this->string);
         return $this;
+    }
+
+    public function remove(string $search): self
+    {
+        return $this->replace($search);
+    }
+
+    public function removeAll(array $search): self
+    {
+        return $this->replace($search);
     }
 }

@@ -50,16 +50,16 @@ class Phraser
 
     public static function getInstance(string $string): Str
     {
-    	return new Str($string);
+        return new Str($string);
     }
 
     public static function __callStatic($method, $args = []): Str
     {
-    	$string = $args[0];
+        $string = $args[0];
 
-    	$instance = static::getInstance($string);
+        $instance = static::getInstance($string);
 
-    	call_user_func_array([$instance, $method], $args);
-    	return $instance;
+        call_user_func_array([$instance, $method], $args);
+        return $instance;
     }
 }
