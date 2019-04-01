@@ -16,21 +16,21 @@ class Str extends StringObject
         $this->string = $string;
     }
 
-    public static function fromCamelCase($string)
+    public static function fromCamelCase()
     {
         $array = preg_split('/(?=[A-Z])/', $this->tring);
 
         return (new StringArray($array))->trim();
     }
 
-    public static function fromSnakeCase($string)
+    public static function fromSnakeCase()
     {
         $array = explode('_', $this->tring);
 
         return new StringArray($array, '_');
     }
 
-    public static function fromKebabCase($string)
+    public static function fromKebabCase()
     {
         $array = explode('-', $this->tring);
 
