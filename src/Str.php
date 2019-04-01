@@ -3,6 +3,7 @@
 namespace Amber\Phraser;
 
 use Amber\Phraser\Base\String\StringObject;
+use Amber\Phraser\Base\StringArray\StringArray;
 
 class Str extends StringObject
 {
