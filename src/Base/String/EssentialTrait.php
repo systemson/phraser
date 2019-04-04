@@ -16,7 +16,7 @@ trait EssentialTrait
      *
      * @return static a new Instance of the StringObject.
      */
-    public function make(string $string = ''): self
+    public static function make(string $string = ''): self
     {
         return new static($string);
     }
@@ -102,7 +102,7 @@ trait EssentialTrait
      */
     public function copy(): self
     {
-        return $this->make($this->string);
+        return static::make($this->string);
     }
 
     /**
@@ -127,7 +127,7 @@ trait EssentialTrait
     {
         $string = str_replace($search, $replace, $this->string);
 
-        return $this->make($string);
+        return static::make($string);
     }
 
     /**
@@ -159,6 +159,6 @@ trait EssentialTrait
     {
         $string = strrev($this->string);
 
-        return $this->make($string);
+        return static::make($string);
     }
 }
