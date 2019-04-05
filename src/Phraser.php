@@ -6,6 +6,18 @@ use Amber\Phraser\Base\StringArray\StringArray;
 
 class Phraser
 {
+    /**
+     * Returns a new string.
+     *
+     * @param string $string.
+     *
+     * @return static a new Instance of the StringObject.
+     */
+    public static function make(string $string = ''): Str
+    {
+        return new Str($string);
+    }
+
     public static function fromString($string)
     {
         $raw = explode(' ', strtolower($string));
