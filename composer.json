@@ -31,12 +31,9 @@
     },
     "scripts": {
         "test": "phpunit",
-        "docs": [
-            "php sami.phar update samiConfig.php -v"
-        ],
+        "docs": "php sami.phar update samiConfig.php -v",
         "sniff": "phpcs --standard=PSR12 ./src",
         "fix-cs": "phpcbf --standard=PSR12 ./src",
-        "speed": "php ./tests/Benchmark.php",
         "pull": [
             "git pull",
             "composer update -vvv"
