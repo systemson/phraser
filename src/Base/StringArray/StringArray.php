@@ -23,7 +23,7 @@ class StringArray extends Collection
         return new Str($this->implode($delimiter ?? $this->delimiter));
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->implode($this->delimiter);
     }

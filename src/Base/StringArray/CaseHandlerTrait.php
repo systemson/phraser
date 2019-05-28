@@ -10,7 +10,7 @@ trait CaseHandlerTrait
             return ucfirst($value);
         });
 
-        $this->exchangeArray($array);
+        $this->exchangeArray($array->toArray());
 
         if ($lower) {
             return $this->newStr('')->lowerCaseFirst();
