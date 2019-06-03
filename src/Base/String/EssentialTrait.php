@@ -161,4 +161,36 @@ trait EssentialTrait
 
         return static::make($string);
     }
+
+    public function prepend(string $substr, $condition = true)
+    {
+        $string = $this->string;
+
+        if ($condition) {
+            $string =  "{$substr}{$string}";
+        }
+
+        return static::make($string);
+    }
+
+    public function append(string $substr, $condition = true)
+    {
+        $string = $this->string;
+
+        if ($condition) {
+            $string .= $substr;
+        }
+
+        return static::make($string ?? '');
+    }
+
+    public function prependEol(int $multiplier)
+    {
+        return static::make($this->prepend(str_repeat(PHP_EOL, $multiplier)));
+    }
+
+    public function appendEol(int $multiplier)
+    {
+        return static::make($this->append(str_repeat(PHP_EOL, $multiplier)));
+    }
 }
