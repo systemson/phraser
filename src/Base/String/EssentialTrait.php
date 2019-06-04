@@ -207,7 +207,7 @@ trait EssentialTrait
      *
      * @return self
      */
-    public function eol(int $multiplier): self
+    public function eol(int $multiplier = 1): self
     {
         return static::make($this->append(str_repeat(PHP_EOL, $multiplier)));
     }
