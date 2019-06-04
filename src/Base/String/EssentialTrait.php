@@ -184,12 +184,7 @@ trait EssentialTrait
         return static::make($string ?? '');
     }
 
-    public function prependEol(int $multiplier)
-    {
-        return static::make($this->prepend(str_repeat(PHP_EOL, $multiplier)));
-    }
-
-    public function appendEol(int $multiplier)
+    public function eol(int $multiplier)
     {
         return static::make($this->append(str_repeat(PHP_EOL, $multiplier)));
     }
