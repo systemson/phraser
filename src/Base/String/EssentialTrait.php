@@ -162,7 +162,15 @@ trait EssentialTrait
         return static::make($string);
     }
 
-    public function prepend(string $substr, $condition = true)
+    /**
+     * Adds a sub-string at the start of the string.
+     *
+     * @param string $substr 
+     * @param mixed  $condition
+     *
+     * @return self
+     */
+    public function prepend(string $substr, $condition = true): self
     {
         $string = $this->string;
 
@@ -173,7 +181,15 @@ trait EssentialTrait
         return static::make($string);
     }
 
-    public function append(string $substr, $condition = true)
+    /**
+     * Adds a sub-string at the end of the string.
+     *
+     * @param string $substr 
+     * @param mixed  $condition
+     *
+     * @return self
+     */
+    public function append(string $substr, $condition = true): self
     {
         $string = $this->string;
 
@@ -184,7 +200,14 @@ trait EssentialTrait
         return static::make($string ?? '');
     }
 
-    public function eol(int $multiplier)
+    /**
+     * Adds a end of line at the end of the string.
+     *
+     * @param int $multiplier How many EOL would be added.
+     *
+     * @return self
+     */
+    public function eol(int $multiplier): self
     {
         return static::make($this->append(str_repeat(PHP_EOL, $multiplier)));
     }
