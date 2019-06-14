@@ -52,8 +52,26 @@ class StringArray extends Collection
         return new Str(parent::first());
     }
 
+    public function withoutFirst()
+    {
+        $last = parent::first();
+
+        return $this->toString()
+            ->remove($last)
+        ;
+    }
+
     public function last()
     {
         return new Str(parent::last());
+    }
+
+    public function withoutLast()
+    {
+        $last = parent::last();
+
+        return $this->toString()
+            ->remove($last)
+        ;
     }
 }
