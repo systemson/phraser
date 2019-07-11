@@ -131,6 +131,21 @@ trait EssentialTrait
     }
 
     /**
+     * Replaces the string.
+     *
+     * @param string|array $pattern  The string(s) to search for.
+     * @param string       $replace The string to replace.
+     *
+     * @return static
+     */
+    public function pregReplace($pattern, string $replace = ''): self
+    {
+        $string = preg_replace($pattern, $replace, $this->string);
+
+        return static::make($string);
+    }
+
+    /**
      * Returns whether the string is empty.
      *
      * @return bool Whether the string is empty.
