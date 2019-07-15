@@ -3,9 +3,12 @@
 namespace Amber\Phraser;
 
 use Amber\Phraser\Base\StringArray\StringArray;
+use Spatie\Macroable\Macroable;
 
 class Phraser
 {
+    use Macroable;
+
     /**
      * Returns a new string.
      *
