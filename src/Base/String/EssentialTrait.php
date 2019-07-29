@@ -90,6 +90,16 @@ trait EssentialTrait
         return $this->string;
     }
 
+    /**
+     * Returns the wrapped string.
+     *
+     * @return string
+     */
+    public function toString(): string
+    {
+        return $this->string;
+    }
+
     public function __toString(): string
     {
         return $this->string;

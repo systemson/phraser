@@ -12,9 +12,9 @@ class Str extends StringObject
      */
     protected $string = '';
 
-    public function __construct(string $string)
+    public function __construct(string $string = null)
     {
-        $this->string = $string;
+        $this->string = $string ?? '';
     }
 
     public function fromCamelCase()
