@@ -65,7 +65,7 @@ trait EssentialTrait
      */
     public function lines(): StringArray
     {
-        $this->string = preg_replace("#\r|\n|\t#", PHP_EOL, $this->string);
+        $this->string = preg_replace("#\r\n|\r|\n|\t#", PHP_EOL, $this->string);
 
         return new StringArray($this->toArray(PHP_EOL), PHP_EOL);
     }
