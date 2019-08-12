@@ -18,11 +18,19 @@ class Phraser
         return new Str($string);
     }
 
-    public static function fromString($string)
+    /**
+     * Retruns a StringArray instance from a string.
+     *
+     * @param string $string
+     * @param string $delimited
+     *
+     * @return StringArray
+     */
+    public static function fromString(string $string, string $delimiter = ' ')
     {
-        $raw = explode(' ', strtolower($string));
+        $raw = explode($delimiter, strtolower($string));
 
-        return (new StringArray($raw, ' '))->trim();
+        return (new StringArray($raw, $delimiter))->trim();
     }
 
     public static function getInstance(string $string): Str

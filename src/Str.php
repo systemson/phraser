@@ -17,6 +17,11 @@ class Str extends StringObject
         $this->string = $string ?? '';
     }
 
+    /**
+     * Retruns a StringArray instance from the a camel case string.
+     *
+     * @return StringArray
+     */
     public function fromCamelCase()
     {
         $array = preg_split('/(?=[A-Z])/', $this->string);
@@ -24,6 +29,11 @@ class Str extends StringObject
         return (new StringArray($array))->trim();
     }
 
+    /**
+     * Retruns a StringArray instance from the a snake case string.
+     *
+     * @return StringArray
+     */
     public function fromSnakeCase()
     {
         $array = explode('_', $this->string);
@@ -31,6 +41,11 @@ class Str extends StringObject
         return new StringArray($array, '_');
     }
 
+    /**
+     * Retruns a StringArray instance from the a snake case string.
+     *
+     * @return StringArray
+     */
     public function fromKebabCase()
     {
         $array = explode('-', $this->string);

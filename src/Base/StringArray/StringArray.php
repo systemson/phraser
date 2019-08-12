@@ -2,7 +2,7 @@
 
 namespace Amber\Phraser\Base\StringArray;
 
-use Amber\Collection\Collection;
+use Amber\Collection\TypedCollection as Collection;
 use Amber\Phraser\Str;
 
 class StringArray extends Collection
@@ -13,9 +13,9 @@ class StringArray extends Collection
 
     public function __construct(array $array, $delimiter = '')
     {
-        $this->delimiter = $delimiter;
+        parent::__construct($array, 'string');
 
-        parent::__construct($array);
+        $this->delimiter = $delimiter;
     }
 
     protected function newStr(string $delimiter = null)
