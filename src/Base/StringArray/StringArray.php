@@ -28,7 +28,7 @@ class StringArray extends Collection
         return $this->implode($this->delimiter);
     }
 
-    public function toString()
+    public function toString(): string
     {
         return $this->newStr();
     }
@@ -44,6 +44,7 @@ class StringArray extends Collection
         ->values();
 
         $this->exchangeArray($array);
+
         return $this;
     }
 

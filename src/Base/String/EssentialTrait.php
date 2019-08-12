@@ -190,7 +190,7 @@ trait EssentialTrait
     /**
      * Adds a sub-string at the start of the string.
      *
-     * @param string $substr 
+     * @param string $substr
      * @param mixed  $condition
      *
      * @return self
@@ -209,7 +209,7 @@ trait EssentialTrait
     /**
      * Adds a sub-string at the end of the string.
      *
-     * @param string $substr 
+     * @param string $substr
      * @param mixed  $condition
      *
      * @return self
