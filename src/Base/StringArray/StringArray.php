@@ -13,9 +13,11 @@ class StringArray extends Collection
 
     public function __construct(array $array, $delimiter = '')
     {
-        parent::__construct($array, 'string');
+        parent::__construct([], 'string');
 
         $this->delimiter = $delimiter;
+
+        $this->setMultiple(array_values($array));
     }
 
     protected function newStr(string $delimiter = null)

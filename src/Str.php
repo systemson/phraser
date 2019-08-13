@@ -42,7 +42,7 @@ class Str extends StringObject
     }
 
     /**
-     * Retruns a StringArray instance from the a snake case string.
+     * Retruns a StringArray instance from the a kebab case string.
      *
      * @return StringArray
      */
