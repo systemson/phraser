@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use Amber\Phraser\Str;
+use Amber\Phraser\Phraser as Str;
 use PHPUnit\Framework\TestCase;
 
 class StringTest extends TestCase
@@ -14,6 +14,7 @@ class StringTest extends TestCase
         $string = new Str($raw);
 
         $this->assertEquals($raw, (string) $string);
+        $this->assertEquals($raw, $string->toString());
 
         $this->assertTrue($string->has('world'));
 
@@ -76,5 +77,23 @@ class StringTest extends TestCase
             str_replace($search, $replace, $raw) . '..',
             (string) $string
         );
+    }
+
+    public function testAppendPrepend()
+    {
+        $raw1 = 'Wapper class';
+        $raw2 = ' to handle strings.';
+
+        $string = new Str($raw1);
+
+        $this->assertEquals($raw1 . $raw2, $string->append($raw2));
+
+        $string = new Str($raw2);
+
+        $this->assertEquals($raw1 . $raw2, $string->prepend($raw1));
+
+        $string = new Str($raw1 . $raw2);
+
+        $this->assertEquals($raw1 . $raw2 . PHP_EOL, $string->eol());
     }
 }

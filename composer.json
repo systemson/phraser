@@ -35,6 +35,7 @@
         "docs": "php sami.phar update samiConfig.php -v",
         "sniff": "phpcs --standard=PSR12 ./src",
         "fix-cs": "phpcbf --standard=PSR12 ./src",
+        "type-hint": "psalm --show-info=false",
         "pull": [
             "git pull",
             "composer update -vvv"

@@ -2,20 +2,38 @@
 
 namespace Amber\Phraser;
 
+use Amber\Phraser\Base\String\StringObject;
 use Amber\Phraser\Base\StringArray\StringArray;
 
-class Phraser
+/**
+ * Wrapper class for working with strings.
+ */
+class Phraser extends StringObject
 {
     /**
-     * Returns a new string.
-     *
-     * @param string $string.
-     *
-     * @return static a new Instance of the StringObject.
+     * @var string The content of the class.
      */
-    public static function make(string $string = ''): Str
+    protected $string = '';
+
+    const SNAKE_CASE_DELIMITER = '_';
+
+    const KEBAB_CASE_DELIMITER = '-';
+
+    /**
+     * Class constructor.
+     *
+     * @param string $string
+     */
+    public function __construct(string $string = null)
     {
-        return new Str($string);
+        $this->string = $string ?? '';
+    }
+
+    protected function newStringArray(array $array, string $delimiter = ''): StringArray
+    {
+        return (new StringArray($array, $delimiter))
+            ->trim()
+        ;
     }
 
     /**
@@ -26,25 +44,46 @@ class Phraser
      *
      * @return StringArray
      */
-    public static function fromString(string $string, string $delimiter = ' ')
+    public function fromString(string $delimiter = ' ')
     {
-        $raw = explode($delimiter, strtolower($string));
+        $array = explode($delimiter, strtolower($this->string));
 
-        return (new StringArray($raw, $delimiter))->trim();
+        return $this->newStringArray($array, $delimiter);
     }
 
-    public static function getInstance(string $string): Str
+    /**
+     * Retruns a StringArray instance from the a camel cased string.
+     *
+     * @return StringArray
+     */
+    public function fromCamelCase(): StringArray
     {
-        return Str::make($string);
+        $array = preg_split('/(?=[A-Z])/', $this->string);
+
+        return $this->newStringArray($array);
     }
 
-    public static function __callStatic($method, $args = [])
+    /**
+     * Retruns a StringArray instance from the a snake cased string.
+     *
+     * @return StringArray
+     */
+    public function fromSnakeCase(): StringArray
     {
-        $string = $args[0];
-        unset($args[0]);
+        $array = explode(self::SNAKE_CASE_DELIMITER, $this->string);
 
-        $instance = static::getInstance($string);
+        return $this->newStringArray($array, self::SNAKE_CASE_DELIMITER);
+    }
 
-        return call_user_func_array([$instance, $method], $args);
+    /**
+     * Retruns a StringArray instance from the a kebab cased string.
+     *
+     * @return StringArray
+     */
+    public function fromKebabCase(): StringArray
+    {
+        $array = explode(self::KEBAB_CASE_DELIMITER, $this->string);
+
+        return $this->newStringArray($array, self::KEBAB_CASE_DELIMITER);
     }
 }

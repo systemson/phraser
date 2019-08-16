@@ -2,7 +2,7 @@
 
 namespace Amber\Phraser\Base\String;
 
-class StringObject implements \JsonSerializable, \ArrayAccess
+abstract class StringObject implements \JsonSerializable, \ArrayAccess
 {
     use EssentialTrait, ArrayAccessTrait, CaseHandlerTrait;
 

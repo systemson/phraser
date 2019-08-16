@@ -203,7 +203,7 @@ trait EssentialTrait
             $string =  "{$substr}{$string}";
         }
 
-        return static::make($string);
+        return static::make($string ?? '');
     }
 
     /**

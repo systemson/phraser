@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use Amber\Phraser\Str;
+use Amber\Phraser\Phraser as Str;
 use Amber\Phraser\Base\StringArray\StringArray;
 use PHPUnit\Framework\TestCase;
 
@@ -56,9 +56,11 @@ class StringArrayTest extends TestCase
         $this->assertInstanceOf(StringArray::class, $array);
 
         $this->assertEquals($raw[0], (string) $array->first());
+        $this->assertEquals($raw[1] . PHP_EOL . $array[2], (string) $array->withoutFirst());
         $this->assertEquals($raw[0], (string) $array[0]);
         $this->assertEquals($raw[1], (string) $array[1]);
         $this->assertEquals($raw[2], (string) $array[2]);
         $this->assertEquals($raw[2], (string) $array->last());
+        $this->assertEquals($raw[0] . PHP_EOL . $array[1], (string) $array->withoutLast());
     }
 }

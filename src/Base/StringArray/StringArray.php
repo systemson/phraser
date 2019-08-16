@@ -3,7 +3,7 @@
 namespace Amber\Phraser\Base\StringArray;
 
 use Amber\Collection\TypedCollection as Collection;
-use Amber\Phraser\Str;
+use Amber\Phraser\Phraser;
 
 class StringArray extends Collection
 {
@@ -11,7 +11,7 @@ class StringArray extends Collection
 
     protected $delimiter = '';
 
-    public function __construct(array $array, $delimiter = '')
+    public function __construct(array $array, string $delimiter = '')
     {
         parent::__construct([], 'string');
 
@@ -22,7 +22,7 @@ class StringArray extends Collection
 
     protected function newStr(string $delimiter = null)
     {
-        return new Str($this->implode($delimiter ?? $this->delimiter));
+        return new Phraser($this->implode($delimiter ?? $this->delimiter));
     }
 
     public function __toString(): string
@@ -52,29 +52,31 @@ class StringArray extends Collection
 
     public function first()
     {
-        return new Str(parent::first());
+        return new Phraser(parent::first());
     }
 
     public function withoutFirst()
     {
         $last = parent::first();
 
-        return $this->toString()
+        return $this->newStr()
             ->remove($last)
+            ->trim()
         ;
     }
 
     public function last()
     {
-        return new Str(parent::last());
+        return new Phraser(parent::last());
     }
 
     public function withoutLast()
     {
         $last = parent::last();
 
-        return $this->toString()
+        return $this->newStr()
             ->remove($last)
+            ->trim()
         ;
     }
 }

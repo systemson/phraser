@@ -7,10 +7,20 @@ use PHPUnit\Framework\TestCase;
 
 class CaseTest extends TestCase
 {
+    public function testToUpperCaseFirst()
+    {
+        $string = 'test multiple cases';
+
+        $this->assertEquals(
+            ucfirst($string),
+            Phraser::make($string)->upperCaseFirst()
+        );
+    }
+
     public function testString()
     {
         $string = 'Test Multiple Cases';
-        $array = Phraser::fromString($string);
+        $array = Phraser::make($string)->fromString(' ');
 
         // Camel Case
         $this->assertEquals(
@@ -52,7 +62,7 @@ class CaseTest extends TestCase
     public function testFromCamelCase()
     {
         $string = 'TestMultipleCases';
-        $array = Phraser::fromCamelCase($string);
+        $array = Phraser::make($string)->fromCamelCase();
 
         // Camel Case
         $this->assertEquals(
@@ -94,7 +104,7 @@ class CaseTest extends TestCase
     public function testFromLowerCamelCase()
     {
         $string = 'testMultipleCases';
-        $array = Phraser::fromCamelCase($string);
+        $array = Phraser::make($string)->fromCamelCase();
 
         // Camel Case
         $this->assertEquals(
@@ -136,7 +146,7 @@ class CaseTest extends TestCase
     public function testFromSnakeCase()
     {
         $string = 'test_multiple_cases';
-        $array = Phraser::fromSnakeCase($string);
+        $array = Phraser::make($string)->fromSnakeCase();
 
         // Camel Case
         $this->assertEquals(
@@ -178,7 +188,7 @@ class CaseTest extends TestCase
     public function testFromKebabCase()
     {
         $string = 'test-multiple-cases';
-        $array = Phraser::fromKebabCase($string);
+        $array = Phraser::make($string)->fromKebabCase();
 
         // Camel Case
         $this->assertEquals(
