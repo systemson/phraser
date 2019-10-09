@@ -236,4 +236,16 @@ trait EssentialTrait
     {
         return static::make($this->append(str_repeat(PHP_EOL, $multiplier)));
     }
+
+    /**
+     * Adds 4 spaces at the end of the string.
+     *
+     * @param int $multiplier How many tabs would be added.
+     *
+     * @return self
+     */
+    public function tab(int $multiplier = 1): self
+    {
+        return static::make($this->append(str_repeat('    ', $multiplier)));
+    }
 }

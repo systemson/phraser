@@ -95,5 +95,7 @@ class StringTest extends TestCase
         $string = new Str($raw1 . $raw2);
 
         $this->assertEquals($raw1 . $raw2 . PHP_EOL, $string->eol());
+
+        $this->assertEquals($raw1 . $raw2 . '    ', $string->tab());
     }
 }
