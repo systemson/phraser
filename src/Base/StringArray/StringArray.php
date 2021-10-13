@@ -57,10 +57,10 @@ class StringArray extends Collection
 
     public function withoutFirst()
     {
-        $last = parent::first();
+        $first = parent::first();
 
         return $this->newStr()
-            ->remove($last)
+            ->replace($first)
             ->trim()
         ;
     }
@@ -75,7 +75,7 @@ class StringArray extends Collection
         $last = parent::last();
 
         return $this->newStr()
-            ->remove($last)
+            ->replace($last)
             ->trim()
         ;
     }

@@ -35,48 +35,11 @@ class StringTest extends TestCase
 
         $this->assertFalse($string->isEmpty());
 
+        $new = 'Hola mundo';
+        $string->exchangeString($new);
+        $this->assertEquals($new, (string) $string);
+
         return $string;
-    }
-
-    /**
-     * @depends testBasics
-     */
-    public function testStringAsArray($string)
-    {
-        $raw = 'Wapper class to handle strings.';
-        $string->exchangeString($raw);
-        $search = 'strings';
-        $replace = 'strings like objects';
-
-        $this->assertEquals($raw, (string) $string);
-
-        unset($string['strings.']);
-        $this->assertEquals(
-            str_replace($search . '.', '', $raw),
-            (string) $string
-        );
-
-        $this->assertFalse(isset($string[$search]));
-
-        $string[] = $search . '.';
-        $this->assertEquals(
-            $raw,
-            (string) $string
-        );
-
-        $this->assertTrue(isset($string[$search]));
-
-        $string[$search] = $replace;
-        $this->assertEquals(
-            str_replace($search, $replace, $raw),
-            (string) $string
-        );
-
-        $string[-1] = '..';
-        $this->assertEquals(
-            str_replace($search, $replace, $raw) . '..',
-            (string) $string
-        );
     }
 
     public function testAppendPrepend()

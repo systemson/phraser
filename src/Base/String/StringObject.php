@@ -2,9 +2,11 @@
 
 namespace Amber\Phraser\Base\String;
 
-abstract class StringObject implements \JsonSerializable, \ArrayAccess
+abstract class StringObject implements \JsonSerializable
 {
-    use EssentialTrait, ArrayAccessTrait, CaseHandlerTrait;
+    use EssentialTrait,
+        CaseHandlerTrait
+    ;
 
     public function exchangeString(string $string): void
     {
@@ -20,21 +22,5 @@ abstract class StringObject implements \JsonSerializable, \ArrayAccess
     {
         $this->string = trim($this->string);
         return $this;
-    }
-
-    public function fix()
-    {
-        $this->string = preg_replace("/\s+/", ' ', $this->string);
-        return $this;
-    }
-
-    public function remove(string $search): self
-    {
-        return $this->replace($search);
-    }
-
-    public function removeAll(array $search): self
-    {
-        return $this->replace($search);
     }
 }
